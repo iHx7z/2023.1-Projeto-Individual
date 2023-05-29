@@ -81,7 +81,7 @@
             Swal.fire('CADASTRO REALIZADO COM SUCESSO AGUARDE ENQUANTO TE REDIRECIONAMOS')
             setInterval(sumirMensagem,5000)
             setTimeout(() => {
-                    window.location = "shop.html";
+                    window.location = "login.html";
                 }, "3000")
             fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -103,7 +103,7 @@
                 Swal.fire('CADASTRO REALIZADO COM SUCESSO AGUARDE ENQUANTO TE REDIRECIONAMOS')
 
                 setTimeout(() => {
-                    window.location = "shop.html";
+                    window.location = "login.html";
                 }, "15000")
 
                 limparFormulario();

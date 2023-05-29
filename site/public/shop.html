@@ -139,22 +139,6 @@
     var listaProduto = []
     var listaPreco = []
 
-    // Para armazenar os valores
-        var listaPrecoFinal = localStorage.getItem("listaProduto")
-        console.log (listaPrecoFinal)
-        localStorage.setItem('listaProduto', JSON.stringify(listaProduto));
-        localStorage.setItem('listaPreco', JSON.stringify(listaPreco));
-
-    // Para recuperar os valores
-        var listaProdutoSalva = JSON.parse(localStorage.getItem('listaProduto'));
-        var listaPrecoSalva = JSON.parse(localStorage.getItem('listaPreco'));
-
-        var resultadoElement = document.getElementById("resultado");
-
-        // Convertendo as arrays em strings
-        var listaProdutoString = listaProduto.join(", "); // Converter a array em uma string separada por vírgulas
-        var listaPrecoString = listaPreco.join(", "); // Converter a array em uma string separada por vírgulas
-
     function cadastrar (produto, preco) {
         
         Swal.fire({
@@ -165,7 +149,6 @@
 
         itensCarrinho.innerHTML = ``
         precoCarrinho.innerHTML = ``
-        console.log(`produto: ${produto} - preço: ${preco}`)
         
         listaPreco.push(preco)
         listaProduto.push(produto)
@@ -177,13 +160,33 @@
 
         itensCarrinho.innerHTML += listaProduto[contador]
         precoCarrinho.innerHTML = somaPreco
-        
-        console.log("Somar: " + somaPreco)
-        console.log(`produto lista: ${listaProduto[0]} - preço lista: ${listaPreco[0]}`)
-    }    
+    }
+    
+            // Para armazenar os valores
+            var listaPrecoFinal = localStorage.getItem("listaProduto")
+        console.log (listaPrecoFinal)
+        sessionStorage.setItem('listaProduto', JSON.stringify(listaProduto));
+        sessionStorage.setItem('listaPreco', JSON.stringify(listaPreco));
+    
     }
 
     function cadastrarBanco () {
+
+        // Para armazenar os valores
+        var listaPrecoFinal = localStorage.getItem("listaProduto")
+        console.log (listaPrecoFinal)
+        localStorage.setItem('listaProduto', JSON.stringify(listaProduto));
+        localStorage.setItem('listaPreco', JSON.stringify(listaPreco));
+
+        // Para recuperar os valores
+        var listaProdutoSalva = JSON.parse(localStorage.getItem('listaProduto'));
+        var listaPrecoSalva = JSON.parse(localStorage.getItem('listaPreco'));
+
+        var resultadoElement = document.getElementById("resultado");
+
+        // Convertendo as arrays em strings
+        var listaProdutoString = listaProduto.join(", "); // Converter a array em uma string separada por vírgulas
+        var listaPrecoString = listaPreco.join(", "); // Converter a array em uma string separada por vírgulas
 
         var somaProduto = 0
         var somaPreco = 0
@@ -255,4 +258,4 @@
         })    
     }   
     }
-</script>   
+</script>

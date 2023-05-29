@@ -129,12 +129,14 @@
 </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+
 <script>
 
     var listaProduto = []
     var listaPreco = []
     var idUsuario = sessionStorage.getItem("ID_USUARIO")
     var listaPrecoFinal = localStorage.getItem("listaProduto")
+
 function cadastrar (produto, preco) {
 
     Swal.fire({
