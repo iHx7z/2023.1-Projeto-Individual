@@ -1,0 +1,222 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#divTitulo {
+    height: 200px;
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+#tituloFiltros {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#divPai {
+    width: 1200px;
+    height: 120px;
+    margin-top: -120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#filtros {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    box-shadow:  7px 7px 15px darkgrey; 
+    border-radius: 10px;
+}
+
+#tituloFiltros {
+    display: flex;
+    justify-content: center;
+}
+
+
+#faturamento {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow:  7px 7px 15px darkgrey; 
+}
+
+#tituloFaturamento {
+    display: flex;
+    justify-content: center;
+}
+
+#valorFaturamento {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -10px;
+}
+
+#triFaturamento {
+    width: 10px;
+    height: 10px;
+    margin-left: 130px;
+    display: flex;
+    margin-top: -7px;
+}
+
+#triTextoFaturamento {
+    font-size: 10px;
+    margin-top: -10px;
+    margin-left: 150px;
+}
+
+#lucro {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow:  7px 7px 15px darkgrey; 
+}
+
+#tituloLucro {
+    display: flex;
+    justify-content: center;
+}
+
+#valorLucro {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -10px;
+}
+
+#triLucro {
+    width: 10px;
+    height: 10px;
+    margin-left: 130px;
+    display: flex;
+    margin-top: -7px;
+}
+
+#triTextoLucro {
+    font-size: 10px;
+    margin-top: -10px;
+    margin-left: 150px;
+}
+
+#devoluções {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow:  7px 7px 15px darkgrey; 
+}
+
+#tituloDevoluções {
+    display: flex;
+    justify-content: center;
+}
+
+#valorDevoluções {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -10px;
+}
+
+#triDevoluções {
+    width: 10px;
+    height: 10px;
+    margin-left: 130px;
+    display: flex;
+    margin-top: -7px;
+}
+
+#triTextoDevoluções {
+    font-size: 10px;
+    margin-top: -10px;
+    margin-left: 150px;
+}
+
+#qtdVendas {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow:  7px 7px 15px darkgrey; 
+}
+
+#tituloVendas {
+    display: flex;
+    justify-content: center;
+}
+
+#valorVendas {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -10px;
+}
+
+#triVendas {
+    width: 10px;
+    height: 10px;
+    margin-left: 130px;
+    display: flex;
+    margin-top: -7px;
+}
+
+#triTextoVendas {
+    font-size: 10px;
+    margin-top: -10px;
+    margin-left: 150px;
+}
+
+#selectMes {
+    width: 100px;
+    height: 100px;
+    height: 30px;
+    font-size: 10px;
+    color: black;
+    text-indent: 0.01px;
+    margin-left: 50px;
+    margin-top: -10px;
+    display: flex;
+}
+
+
+#myChart {
+    width:100vw;
+    width:70vh; 
+    height: 20vw;
+}
+
+#myChart2 {
+    width:100vw; 
+    height: 70vh;
+}
+
+.paiGraficos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 1200px;
+    height: 200px;
+    margin-top: 30px;
+
+}

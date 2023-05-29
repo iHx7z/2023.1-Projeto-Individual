@@ -1,0 +1,483 @@
+body {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+#tituloH1 {
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+#tituloH1 a {
+    text-decoration: none;
+    color: black;
+}
+
+#menu {
+    width: 700px;
+    height: 10px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000000;
+}
+
+#menu a{
+    text-decoration: none;
+    color: black;
+}
+
+#menu a:hover {
+    color: darkgray;
+}
+
+#camisetas {
+    font-size: 14px;
+    margin-top: -10px;
+    color: slategray;
+}
+
+#calças {
+    font-size: 14px;
+    margin-top: -10px;
+    color: slategray;
+}
+
+#moletons {
+    font-size: 14px;
+    margin-top: -10px;
+    color: slategray;
+}
+
+#tênis {
+    font-size: 14px;
+    margin-top: -10px;
+    color: slategray;
+}
+
+#principal {
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 80px;
+}
+
+.botaoCadastrar {
+    width: 100px;
+    padding: 10px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: black;
+    color: #ffffff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 8px;
+    display: flex;
+    margin-left: 75px;
+    margin-top: -6px;
+}
+
+.botaoCadastrar:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#botaoFinalizar:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#botaoFinalizar {
+    width: 100px;
+    padding: 10px 3px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: black;
+    color: #ffffff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 8px;
+    display: flex;
+    margin-left: 85px;
+    margin-top: 10px;
+}
+
+#camiseta1 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta1 img{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-left: 25px;
+}
+
+#camiseta1 p{
+   text-align: center;
+}
+
+#p1 {
+    font-size: 12px;
+    margin-top: -15px;
+    
+}
+
+#camiseta2 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta2 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta2 p{
+   text-align: center;
+}
+
+#p2 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta3 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta3 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta3 p{
+   text-align: center;
+}
+
+#p3 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta4 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta4 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta4 p{
+   text-align: center;
+}
+
+#p4 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#principal2 {
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -70px;
+}
+
+#camiseta5 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta5 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta5 p{
+   text-align: center;
+}
+
+#p5 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta6 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta6 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta6 p{
+   text-align: center;
+}
+
+#p6 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta7 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta7 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta7 p{
+   text-align: center;
+}
+
+#p7 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta8 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta8 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta8 p{
+   text-align: center;
+}
+
+#p8 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#principal3 {
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -70px;
+}
+
+#camiseta9 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta9 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta9 p{
+   text-align: center;
+}
+
+#p9 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta10 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta10 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta10 p{
+   text-align: center;
+}
+
+#p10 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta11 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta11 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta11 p{
+   text-align: center;
+}
+
+#p11 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#camiseta12 {
+    width: 250px;
+    height: 250px;
+}
+
+#camiseta12 img{
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+#camiseta12 p{
+   text-align: center;
+}
+
+#p12 {
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+#carrinho {
+    width: 1200px;
+    height: 200px;
+}
+
+#checkout {
+    width: 300px;
+    height: 100px;
+    display: flex;    
+    margin-left: 80px
+}
+
+#imgcarrinho {
+    display: flex;
+    width: 45px;
+    margin-top: -120px;
+    margin-left: 260px;
+}
+
+#linha {
+    background-color: black;
+    width: 1100px;
+    height: 3px;
+    margin-top: -150px;
+}
+
+.rodapé {
+    height: 100px;
+    color: black;
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#camiseta1 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta2 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta3 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta4 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta5 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta6 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta7 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta8 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta9 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta10 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta11 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#camiseta12 img:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#preçoFinal {
+    margin-left: 85px;
+    font-weight: bold;
+}
+
+#peçasFinais {
+    margin-left: 85px;
+    font-weight: bold;   
+}

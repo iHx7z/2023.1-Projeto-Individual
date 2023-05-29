@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANÁLISE DE VENDAS</title>
+    <link rel="stylesheet" href="./css/dash.css">
+
+
+</head>
+<body>
+
+    <div id="divTitulo">
+      <h1 id="tituloDash">ANÁLISE DE VENDAS</h1>
+  </div>
+
+    <div id="divPai">
+
+      <div id="filtros">
+        <p id="tituloFiltros">Filtros</p>
+        <select name="select" id="selectMes">
+          <option value="escolher">Mês</option>
+          <option value="janeiro">Janeiro</option>
+          <option value="fevereiro">Fevereiro</option>
+          <option value="março">Março</option>
+        </select>
+      </div>
+
+    <div id="faturamento">
+        <p id="tituloFaturamento">Faturamento</p>
+        <p id="valorFaturamento">R$ 20 Mi</p>
+        <img id="triFaturamento" src="./assets/triangulo verde.png">
+        <p id="triTextoFaturamento">15,95%</p>
+    </div>
+
+    <div id="lucro">
+        <p id="tituloLucro">Lucro</p>
+        <p id="valorLucro">R$ 20 Mi</p>
+        <img id="triLucro" src="./assets/triangulo verde.png">
+        <p id="triTextoLucro">15,95%</p>
+    </div>
+
+    <div id="devoluções">
+        <p id="tituloDevoluções">Devoluções</p>
+        <p id="valorDevoluções">R$ 20 Mi</p>
+        <img id="triDevoluções" src="./assets/triangulo verde.png">
+        <p id="triTextoDevoluções">15,95%</p>
+    </div>
+
+    <div id="qtdVendas">
+        <p id="tituloVendas">Quantidade de Vendas</p>
+        <p id="valorVendas">R$ 20 Mi</p>
+        <img id="triVendas" src="./assets/triangulo verde.png">
+        <p id="triTextoVendas">15,95%</p>
+    </div>
+    </div>
+
+    <div class="paiGraficos">
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div>
+      <canvas id="myChart2"></canvas>
+  </div>
+</div>
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'],
+            datasets: [{
+              label: 'temperatura média',
+              data: [22, 24, 27, 23, 20, 18],
+              borderWidth: 1
+            },
+            {
+              label: 'umidade média',
+              data: [90, 89, 93, 87, 88, 82],
+              borderWidth: 1
+            }
+            ]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+      </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+<script>
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'],
+      datasets: [{
+        label: 'temperatura média',
+        data: [22, 24, 27, 23, 20, 18],
+        borderWidth: 1
+      },
+      {
+        label: 'umidade média',
+        data: [90, 89, 93, 87, 88, 82],
+        borderWidth: 1
+      }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOP</title>
+    <link rel="stylesheet" href="./css/shopcalças.css">
+</head>
+
+<body>
+
+    <h1 id="tituloH1"><a href="./index.html">STREETWEAR</a></h1>
+    
+    <div id="menu">
+        <h1 id="camisetas"><a href="./shop.html">CAMISETAS</a></h1>
+        <h1 id="calças"><a href="./shopcalças.html">CALÇAS</a></h1>
+        <h1 id="moletons"><a href="shopmoletons.html">MOLETONS</a></h1>
+        <h1 id="tênis"><a href="shopjacketa.html">JAQUETAS</a></h1>
+    </div>
+    </div>
+
+    <div id="principal">
+
+            <div id="camiseta1">
+                <img src="./assets/brown black.jpg">
+                <p>BIG BOYS BROWN BLACK</p>
+                <p id="p1">R$800,00</p>
+                <button onclick="cadastrar('BIG BOYS BROWN BLACK, ',800.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta2">
+                <img src="./assets/swashed black.jpg">
+                <p>BIG BOYS SWASHED BLACK</p>
+                <p id="p2">R$800,00</p>
+                <button onclick="cadastrar('BIG BOYS WASHED BLACK, ',800.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta3">
+                <img src="./assets/LIGHT BLUE.jpg">
+                <p>BIG BOYS LIGHT BLUE</p>
+                <p id="p3">R$800,00</p>
+                <button onclick="cadastrar('BIG BOYS LIGHT BLUE, ',800.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta4">
+                <img src="assets/ARMY GREEN.webp">
+                <p>BIG BOYS ARMY GREEN</p>
+                <p id="p4">R$800,00</p>
+                <button onclick="cadastrar('BIG BOYS ARMY GREEN, ',800.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+        </div>
+
+        <div id="principal2">
+
+            <div id="camiseta5">
+                <img src="assets/sufgang tech.webp">
+                <p>SUFGANG TECH PANTS</p>
+                <p id="p5">R$320,00</p>
+                <button onclick="cadastrar('SUFGANG TECH PANTS, ',320.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta6">
+                <img src="assets/jeans suf.webp">
+                <p>SUFGANG JEANS</p>
+                <p id="p6">R$450,00</p>
+                <button onclick="cadastrar('SUFGANG JEANS, ',450.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta7">
+                <img src="./assets/suf convertible.webp ">
+                <p>SUFGANG CONVERTIBLE</p>
+                <p id="p7">R$520,00</p>
+                <button onclick="cadastrar('SUFGANG CONVERTIBLE, ',520.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta8">
+                <img src="./assets/trouser brown.webp">
+                <p>CLASS TROUSER BROWN</p>
+                <p id="p8">R$420,00</p>
+                <button onclick="cadastrar('CLASS TROUSER BROWN, ',420.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+        </div>
+
+        <div id="principal3">
+
+            <div id="camiseta9">
+                <img src="./assets/supreme cargo.jpg">
+                <p>SUPREME YELLOW CARGO</p>
+                <p id="p9">R$780,00</p>
+                <button onclick="cadastrar('SUPREME YELLOW CARGO, ',780.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta10">
+                <img src="./assets/PALACE PRETA.webp">
+                <p>PALACE WORK PRETA</p>
+                <p id="p10">R$900,00</p>
+                <button onclick="cadastrar('PALACE WORK PRETA, ',900.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta11">
+                <img src="./assets/FUCKING AWESOME SOLDIER.webp">
+                <p>FUCKING AWESOME SOLDIER</p>
+                <p id="p11">R$650,00</p>
+                <button onclick="cadastrar('FUCKING AWESOME SOLDIER, ',650.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+
+            <div id="camiseta12">
+                <img src="./assets/PALACE BEGE.webp">
+                <p>PALACE WORK PANTS</p>
+                <p id="p12">R$800,00</p>
+                <button onclick="cadastrar('PALACE WORK PANTS, ',800.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            </div>
+        </div>
+
+        <div id="linha"></div>
+
+        <div id="carrinho">
+            <h1 id="checkout">CHECKOUT</h1>
+            <img src="./assets/carrinho.png" id="imgcarrinho">
+            <p id="peçasFinais">SEUS ITENS:<span id="itensCarrinho"></span></p>
+            <p id="preçoFinal">VALOR TOTAL R$:<span id="precoCarrinho"></span></p>
+            <button onclick="cadastrarBanco()" id="botaoFinalizar">FINALIZAR COMPRA</button>
+        </div>
+
+        <div class="rodapé">
+            <h4> copyright by anthony.ferreira@sptech.school &copy; </h4>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script>
+
+    var listaProduto = []
+    var listaPreco = []
+    var idUsuario = sessionStorage.getItem("ID_USUARIO")
+    var listaPrecoFinal = localStorage.getItem("listaProduto")
+function cadastrar (produto, preco) {
+
+    Swal.fire({
+        icon: 'success',
+        title: 'ITEM ADICIONADO AO CARRINHO',
+        text: 'Continue Navegando',
+        })
+        
+    itensCarrinho.innerHTML = ``
+    precoCarrinho.innerHTML = ``
+    console.log(`produto: ${produto} - preço: ${preco}`)
+    
+    listaPreco.push(preco)
+    listaProduto.push(produto)
+    
+    var somaPreco = 0
+    
+    for (contador = 0; contador < listaPreco.length; contador ++) {
+        
+    somaPreco += listaPreco[contador]
+
+    itensCarrinho.innerHTML += listaProduto[contador]
+    precoCarrinho.innerHTML = somaPreco
+    
+    console.log("Somar: " + somaPreco)
+    console.log(`produto lista: ${listaProduto[0]} - preço lista: ${listaPreco[0]}`)
+}    
+}
+
+function cadastrarBanco () {
+
+var somaProduto = 0
+var somaPreco = 0
+
+if (listaPreco == "" || listaProduto == "") {
+    Swal.fire('CARRINHO VAZIO')    
+} else {
+Swal.fire('COMPRA REALIZADA COM SUCESSO ENVIAREMOS UM EMAIL COM MAIS INFORMAÇÕES')
+console.log (listaProduto, listaPreco)
+
+for (contador = 0; contador < listaPreco.length; contador ++) {
+    somaPreco += listaPreco[contador]
+}
+console.log (somaPreco)
+
+for (contador = 0; contador < listaProduto.length; contador ++) {
+    somaProduto += listaProduto[contador]
+}
+console.log (somaProduto)
+
+fetch("/carrinho/cadastrar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        produtosServer: somaProduto,
+        precoTotalServer: somaPreco,
+        fkUsuarioServer:  idUsuario
+    })
+}).then(function (resposta) {
+    console.log("ESTOU NO THEN DO entrar()!")
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id;
+
+            setTimeout(function () {
+            //  Swal.fire('LOGIN REALIZADO COM SUCESSO BEM VINDO')
+                // window.location = "shop.html"
+                setTimeout(() => {
+            // window.location = "shop.html";
+        }, "3000")
+
+            }, 500); // apenas para exibir o loading
+
+        });
+
+    } else {
+
+        Swal.fire('USUARIO NÃO CADASTRADO')
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+            finalizarAguardar(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})    
+}   
+}
+</script>   

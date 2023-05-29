@@ -1,0 +1,268 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* cabeçalho */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: -1px;
+    max-width: 1200px;
+}
+
+.titulo {
+    font-size: 17px;
+    margin-left: 50px;
+    color: black;
+    text-decoration: none;
+}
+
+.titulo a {
+    color: black;
+    text-decoration: none;
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+    color: black;
+}
+
+li:hover {
+    text-decoration: underline;
+}
+
+.link-menu{
+    color: black;
+}
+
+.link-menu:hover{
+    text-decoration: underline;
+    color: black;
+}
+/* fim do cabeçalho */
+
+/* inicio do banner */
+.banner {
+    background-image: url(../assets/stussy\ shop\ v2.jpg);
+    margin: 0;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    } 
+/* fim do banner */
+
+/* inicio da história */
+#sessão2 {
+    background-color: white;
+    width: auto;
+    height: 350px;
+    margin-top: -50px;
+    padding: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: start;
+}
+
+#textoHistoria {
+    height: 350px;
+    width: 1200px;
+    text-align: justify;
+    color: black;
+}
+
+#imagemHistoria {
+    margin: auto;
+    margin-top: -30px;
+    width: 300px;
+    height: 350px;   
+    margin-left: 300px; 
+}
+
+#tituloHistoria {
+    color: black;
+    font-size: 40px;
+    margin-left: 100px;
+    margin-top: -50px;
+}
+
+#subtituloHistoria {
+    color: slategrey;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: -20px;
+}
+/* fim da pt1 historia */
+
+/* começo da historia pt2 */
+#sessão3 {
+    background-color: white;
+    width: auto;
+    height: 350px;
+    margin-top: 10px;
+    padding: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 20px;
+    box-shadow:  7px 7px 15px darkgrey;   
+}
+
+#imagens {
+    width: 1070px;
+    height: 200px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+}
+
+#textoMãe {
+    display: flex;
+    justify-content: space-between;
+}
+
+#img1 {
+    width: 230px;
+    height: 100%;
+    margin-left: 50px;
+}
+
+#img2 {
+    width: 400px;
+    height: 400px;
+    margin-left: 20px;
+}
+
+#img3 {
+    width: 200px;
+    height: 250px;
+    margin-right: 40px;
+}
+
+#texto1 {
+    width: 250px;
+    font-size: 13px;
+    margin-left: 50px;
+    text-align: justify;
+    font-weight: bold;
+    color: black;
+}
+
+#texto2 {
+    width: 250px;
+    font-size: 13px;
+    margin-left: 30px;
+    text-align: justify;
+    font-weight: bold;
+    color: black;
+}
+
+#texto3 {
+    width: 250px;
+    font-size: 13px;
+    margin-right: 35px;
+    text-align: justify;
+    font-weight: bold;
+    color: black;
+}
+
+#tituloSessão3 {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    font-size: 30px;
+    color: slategray;
+}
+
+#titulop1 {
+    color: slategray;
+    margin-left: 60px;
+}
+
+#titulop2 {
+    color: slategray;
+    margin-left: 70px;
+}
+
+#titulop3 {
+    color: slategray;
+    margin-left: 70px;
+}
+/* fim da história pt2 */
+
+/* começo do cadastre-se */
+#sessão4 {
+    background-color: black;
+    border-radius: 20px;
+    width: auto;
+    height: 80px;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow:  7px 7px 15px darkgrey;   
+}
+
+#botaoCadastrar:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+    }
+
+#textoCadastre-se {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#botaoCadastrar {
+    background-color: slategray;
+    border-radius: 20px;
+    width: 150px;
+    height: 35px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+#botaoCadastrar:hover {
+    color: aqua;
+}
+
+#botaoCadastrar a {
+    text-decoration: none;
+    color: white;
+}
+/* fim do cadastre-se */
+
+/* inicio do rodape */
+.rodapé {
+    height: 100px;
+    color: black;
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/* fim do rodape */

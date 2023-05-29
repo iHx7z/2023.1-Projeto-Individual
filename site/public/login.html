@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+
+    <h1 id="tituloH1"><a href="./index.html">STREETWEAR</a></h1>
+
+    <div class="container">
+        <div id="login">
+        <span id="email">E-mail:</span> <br>
+        <input id="email_input" type="email" placeholder="Digite Seu Email"> <br>
+        <span id="senha">Senha:</span> <br>
+        <input id="senha_input" type="password" placeholder="******************"> <br>
+        <button onclick="entrar()" class="botaoEntrar">Entrar</button>
+    </div>
+    </div>
+    
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script>
+
+
+    function entrar() {
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "anthony@gmail.com" && senhaVar == "senha123") {
+            setTimeout(() => {
+                    window.location = "dash.html";
+                }, "3000") }
+        
+
+        if (emailVar == "" || senhaVar == "") {
+            Swal.fire('TODOS OS CAMPOS PRECISAM SER PREENCHIDOS')
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                     Swal.fire('LOGIN REALIZADO COM SUCESSO BEM VINDO')
+                        // window.location = "shop.html"
+                        setTimeout(() => {
+                    window.location = "shop.html";
+                }, "3000")
+
+                    }, 500); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                Swal.fire('USUARIO NÃO CADASTRADO')
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>
