@@ -139,29 +139,21 @@
 
 <script>
 
-    var idUsuario = sessionStorage.getItem("ID_USUARIO")
-    console.log(idUsuario)
-    // if(sessionStorage.listaProduto) {
-    //     var listaProduto = sessionStorage.listaProduto.split(',')
-    // } else {
-    //     var listaProduto = []
-    // }
-
-    // if(sessionStorage.listaPreco) {
-    //     var listaPreco = sessionStorage.listaPreco.split(',')
-    // } else {
-    //     var listaPreco = []
-    // }
-
     var listaProduto = []
     var listaPreco = []
-    console.log(listaProduto)
-    console.log(listaPreco)
+    var idUsuario = sessionStorage.getItem("ID_USUARIO")
 
+    if (sessionStorage.getItem("listaProduto") != "") {
+        listaProduto = sessionStorage.getItem("listaProduto").split(",");
+    }
+
+    if (sessionStorage.getItem("listaPreco") != "") {
+        listaPreco = sessionStorage.getItem("listaPreco").split(",").map((preco) => Number(preco))
+    }
+
+    adicionarAoCarrinho();
 
     function cadastrar(produto, preco) {
-
-        console.log("cadastrou")
 
         Swal.fire({
             icon: 'success',
@@ -171,44 +163,35 @@
 
         itensCarrinho.innerHTML = ``
         precoCarrinho.innerHTML = ``
+        console.log(`produto: ${produto} - preço: ${preco}`)
 
-        listaProduto.push(produto)
         listaPreco.push(preco)
+        listaProduto.push(produto)
 
-        var somaPreco = 0
-        for (contador = 0; contador < listaPreco.length; contador++) {
 
-            somaPreco += listaPreco[contador]
+        adicionarAoCarrinho()
 
-            // for(var contador = 0; contador < listaProduto.length; contador++) {
-            //     itensCarrinho.innerHTML += listaProduto[contador] + ', '
-            // }
-            itensCarrinho.innerHTML = listaProduto
-            precoCarrinho.innerHTML = somaPreco
-        }
 
         sessionStorage.setItem('listaProduto', listaProduto);
         sessionStorage.setItem('listaPreco', listaPreco);
 
     }
 
+    function adicionarAoCarrinho() {
+        var somaPreco = 0
+        for (contador = 0; contador < listaPreco.length; contador++) {
+
+            somaPreco += listaPreco[contador]
+
+            itensCarrinho.innerHTML += listaProduto[contador]
+            precoCarrinho.innerHTML = somaPreco
+
+            console.log("Somar: " + somaPreco)
+            console.log(`produto lista: ${listaProduto[0]} - preço lista: ${listaPreco[0]}`)
+        }
+    }
+
     function cadastrarBanco() {
-
-        // Para armazenar os valores
-        var listaPrecoFinal = localStorage.getItem("listaProduto")
-        console.log(listaPrecoFinal)
-        localStorage.setItem('listaProduto', JSON.stringify(listaProduto));
-        localStorage.setItem('listaPreco', JSON.stringify(listaPreco));
-
-        // Para recuperar os valores
-        var listaProdutoSalva = JSON.parse(localStorage.getItem('listaProduto'));
-        var listaPrecoSalva = JSON.parse(localStorage.getItem('listaPreco'));
-
-        var resultadoElement = document.getElementById("resultado");
-
-        // Convertendo as arrays em strings
-        var listaProdutoString = listaProduto.join(", "); // Converter a array em uma string separada por vírgulas
-        var listaPrecoString = listaPreco.join(", "); // Converter a array em uma string separada por vírgulas
 
         var somaProduto = 0
         var somaPreco = 0
@@ -235,7 +218,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    produtosServer: somaProduto,
+                    produtosServer:  listaProduto,
                     precoTotalServer: somaPreco,
                     fkUsuarioServer: idUsuario
                 })
@@ -266,7 +249,10 @@
 
                 } else {
 
-                    Swal.fire('USUARIO NÃO CADASTRADO')
+                    Swal.fire('USUARIO NÃO CADASTRADO REDIRECIONANDO...')
+                    setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
                     console.log("Houve um erro ao tentar realizar o login!");
 
                     resposta.text().then(texto => {

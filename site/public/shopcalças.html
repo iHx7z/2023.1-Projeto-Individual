@@ -135,107 +135,128 @@
     var listaProduto = []
     var listaPreco = []
     var idUsuario = sessionStorage.getItem("ID_USUARIO")
-    var listaPrecoFinal = localStorage.getItem("listaProduto")
 
-function cadastrar (produto, preco) {
-
-    Swal.fire({
-        icon: 'success',
-        title: 'ITEM ADICIONADO AO CARRINHO',
-        text: 'Continue Navegando',
-        })
-        
-    itensCarrinho.innerHTML = ``
-    precoCarrinho.innerHTML = ``
-    console.log(`produto: ${produto} - preço: ${preco}`)
-    
-    listaPreco.push(preco)
-    listaProduto.push(produto)
-    
-    var somaPreco = 0
-    
-    for (contador = 0; contador < listaPreco.length; contador ++) {
-        
-    somaPreco += listaPreco[contador]
-
-    itensCarrinho.innerHTML += listaProduto[contador]
-    precoCarrinho.innerHTML = somaPreco
-    
-    console.log("Somar: " + somaPreco)
-    console.log(`produto lista: ${listaProduto[0]} - preço lista: ${listaPreco[0]}`)
-}    
-}
-
-function cadastrarBanco () {
-
-var somaProduto = 0
-var somaPreco = 0
-
-if (listaPreco == "" || listaProduto == "") {
-    Swal.fire('CARRINHO VAZIO')    
-} else {
-Swal.fire('COMPRA REALIZADA COM SUCESSO ENVIAREMOS UM EMAIL COM MAIS INFORMAÇÕES')
-console.log (listaProduto, listaPreco)
-
-for (contador = 0; contador < listaPreco.length; contador ++) {
-    somaPreco += listaPreco[contador]
-}
-console.log (somaPreco)
-
-for (contador = 0; contador < listaProduto.length; contador ++) {
-    somaProduto += listaProduto[contador]
-}
-console.log (somaProduto)
-
-fetch("/carrinho/cadastrar", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        produtosServer: somaProduto,
-        precoTotalServer: somaPreco,
-        fkUsuarioServer:  idUsuario
-    })
-}).then(function (resposta) {
-    console.log("ESTOU NO THEN DO entrar()!")
-
-    if (resposta.ok) {
-        console.log(resposta);
-
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-
-            sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-
-            setTimeout(function () {
-            //  Swal.fire('LOGIN REALIZADO COM SUCESSO BEM VINDO')
-                // window.location = "shop.html"
-                setTimeout(() => {
-            // window.location = "shop.html";
-        }, "3000")
-
-            }, 500); // apenas para exibir o loading
-
-        });
-
-    } else {
-
-        Swal.fire('USUARIO NÃO CADASTRADO')
-        console.log("Houve um erro ao tentar realizar o login!");
-
-        resposta.text().then(texto => {
-            console.error(texto);
-            finalizarAguardar(texto);
-        });
+    if (sessionStorage.getItem("listaProduto") != "") {
+        listaProduto = sessionStorage.getItem("listaProduto").split(",");
     }
 
-}).catch(function (erro) {
-    console.log(erro);
-})    
-}   
-}
-</script>   
+    if (sessionStorage.getItem("listaPreco") != "") {
+        listaPreco = sessionStorage.getItem("listaPreco").split(",").map((preco) => Number(preco))
+    }
+
+    adicionarAoCarrinho();
+
+    function cadastrar(produto, preco) {
+
+        Swal.fire({
+            icon: 'success',
+            title: 'ITEM ADICIONADO AO CARRINHO',
+            text: 'Continue Navegando',
+        })
+
+        itensCarrinho.innerHTML = ``
+        precoCarrinho.innerHTML = ``
+        console.log(`produto: ${produto} - preço: ${preco}`)
+
+        listaPreco.push(preco)
+        listaProduto.push(produto)
+
+
+        adicionarAoCarrinho()
+
+
+        sessionStorage.setItem('listaProduto', listaProduto);
+        sessionStorage.setItem('listaPreco', listaPreco);
+
+    }
+
+    function adicionarAoCarrinho() {
+        var somaPreco = 0
+        for (contador = 0; contador < listaPreco.length; contador++) {
+
+            somaPreco += listaPreco[contador]
+
+            itensCarrinho.innerHTML += listaProduto[contador]
+            precoCarrinho.innerHTML = somaPreco
+
+            console.log("Somar: " + somaPreco)
+            console.log(`produto lista: ${listaProduto[0]} - preço lista: ${listaPreco[0]}`)
+        }
+    }
+
+    function cadastrarBanco() {
+
+        var somaProduto = 0
+        var somaPreco = 0
+
+        if (listaPreco == "" || listaProduto == "") {
+            Swal.fire('CARRINHO VAZIO')
+        } else {
+            Swal.fire('COMPRA REALIZADA COM SUCESSO ENVIAREMOS UM EMAIL COM MAIS INFORMAÇÕES')
+            console.log(listaProduto, listaPreco)
+
+            for (contador = 0; contador < listaPreco.length; contador++) {
+                somaPreco += listaPreco[contador]
+            }
+            console.log(somaPreco)
+
+            for (contador = 0; contador < listaProduto.length; contador++) {
+                somaProduto += listaProduto[contador]
+            }
+            console.log(somaProduto)
+
+            fetch("/carrinho/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    produtosServer:  listaProduto,
+                    precoTotalServer: somaPreco,
+                    fkUsuarioServer: idUsuario
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+
+                        setTimeout(function () {
+                            //  Swal.fire('LOGIN REALIZADO COM SUCESSO BEM VINDO')
+                            // window.location = "shop.html"
+                            setTimeout(() => {
+                                // window.location = "shop.html";
+                            }, "3000")
+
+                        }, 500); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    Swal.fire('USUARIO NÃO CADASTRADO REDIRECIONANDO...')
+                    setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+    }
+</script>

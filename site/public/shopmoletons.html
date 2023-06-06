@@ -253,7 +253,10 @@
 
                 } else {
 
-                    Swal.fire('USUARIO NÃO CADASTRADO')
+                    Swal.fire('USUARIO NÃO CADASTRADO REDIRECIONANDO...')
+                    setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
                     console.log("Houve um erro ao tentar realizar o login!");
 
                     resposta.text().then(texto => {

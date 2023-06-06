@@ -17,4 +17,4 @@ SELECT * FROM carrinho;
 SELECT * FROM usuario;
 
 SELECT * FROM usuario JOIN carrinho
-ON fkusuario = id WHERE id = 24;  
+ON fkusuario = id WHERE id = 25;  
