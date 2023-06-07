@@ -168,9 +168,7 @@
         listaPreco.push(preco)
         listaProduto.push(produto)
 
-
         adicionarAoCarrinho()
-
 
         sessionStorage.setItem('listaProduto', listaProduto);
         sessionStorage.setItem('listaPreco', listaPreco);
@@ -179,11 +177,11 @@
 
     function adicionarAoCarrinho() {
         var somaPreco = 0
-        for (contador = 0; contador < listaPreco.length; contador++) {
+        for (var contador = 0; contador < listaPreco.length; contador++) {
 
             somaPreco += listaPreco[contador]
 
-            itensCarrinho.innerHTML += listaProduto[contador]
+            itensCarrinho.innerHTML += listaProduto[contador] + " | "
             precoCarrinho.innerHTML = somaPreco
 
             console.log("Somar: " + somaPreco)
@@ -198,9 +196,14 @@
 
         if (listaPreco == "" || listaProduto == "") {
             Swal.fire('CARRINHO VAZIO')
+
         } else {
             Swal.fire('COMPRA REALIZADA COM SUCESSO ENVIAREMOS UM EMAIL COM MAIS INFORMAÇÕES')
             console.log(listaProduto, listaPreco)
+
+            // sessionStorage.getItem('listaPreco')
+            // sessionStorage.getItem('listaPreco')
+            // sessionStorage.clear()
 
             for (contador = 0; contador < listaPreco.length; contador++) {
                 somaPreco += listaPreco[contador]
@@ -264,6 +267,14 @@
             }).catch(function (erro) {
                 console.log(erro);
             })
+
+            itensCarrinho.innerHTML = ""
+            precoCarrinho.innerHTML = ""
+
+            listaProduto = []
+            listaPreco = []
+            sessionStorage.setItem('listaPreco', "");
+            sessionStorage.setItem('listaProduto', "");
         }
     }
 </script>

@@ -27,7 +27,7 @@
             <img src="./assets/balenciaga cats.jpg">
             <p>BALENCIAGA I LOVE CATS</p>
             <p id="p1">R$5.000,00</p>
-            <button onclick="cadastrar('BALENCIAGA I LOVE CATS, ',5000.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('BALENCIAGA I LOVE CATS',5000.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -35,7 +35,7 @@
             <img src="./assets/vetements metal.jpg">
             <p>VETEMENTS HEAVY METAL</p>
             <p id="p2">R$4.500,00</p>
-            <button onclick="cadastrar('VETEMENTS HEAVY METAL, ',4500.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('VETEMENTS HEAVY METAL',4500.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -43,7 +43,7 @@
             <img src="https://th.bing.com/th/id/R.d3f1458dd6b0acccf6ac85f15081a9b0?rik=OI6ZtnU70wntGg&pid=ImgRaw&r=0">
             <p>TRAVIS SCOTT X AIR JORDAN</p>
             <p id="p3">R$1.500,00</p>
-            <button onclick="cadastrar('TRAVIS SCOTT X AIR JORDAN, ',1500.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('TRAVIS SCOTT X AIR JORDAN',1500.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -51,7 +51,7 @@
             <img src="./assets/stussy basic.jpg">
             <p>STUSSY BASIC BLACK</p>
             <p id="p4">R$1000,00</p>
-            <button onclick="cadastrar('STUSSY BACIC BLACK, ',1000.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('STUSSY BACIC BLACK',1000.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
     </div>
@@ -62,7 +62,7 @@
             <img src="./assets/FA VERDE.webp">
             <p>FUCKING AWESOME CUT OUT</p>
             <p id="p5">R$700,00</p>
-            <button onclick="cadastrar('FUCKING AWESOME CUT OUT, ',700.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('FUCKING AWESOME CUT OUT',700.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -70,7 +70,7 @@
             <img src="./assets/FA BRANCO.webp">
             <p>FUCKING AWESOME QUANTUM</p>
             <p id="p6">R$850,00</p>
-            <button onclick="cadastrar('FUCKING AWESOME QUANTUM, ',850.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('FUCKING AWESOME QUANTUM',850.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -78,7 +78,7 @@
             <img src="assets/fa murder.webp">
             <p>FUCKING AWESOME JACKYLL</p>
             <p id="p7">R$700,00</p>
-            <button onclick="cadastrar('FUCKING AWESOME JACKYLL, ',700.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('FUCKING AWESOME JACKYLL',700.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -86,7 +86,7 @@
             <img src="./assets/FA GRAPIHC.webp">
             <p>FUCKING AWESOME WHAT'S NEXT</p>
             <p id="p8">R$699,00,00</p>
-            <button onclick="cadastrar('FUCKING AWESOME WHATS NEXT, ',699.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('FUCKING AWESOME WHATS NEXT',699.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
     </div>
@@ -97,14 +97,14 @@
             <img src="./assets/palace blue.webp">
             <p>PALACE SNAKE</p>
             <p id="p9">R$1200,00</p>
-            <button onclick="cadastrar('PALACE SNAKE, ',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            <button onclick="cadastrar('PALACE SNAKE',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
         </div>
 
         <div id="camiseta10">
             <img src="./assets/PALACE BLUE 2.webp">
             <p>PALACE CRYSTALIZED</p>
             <p id="p10">R$900,00</p>
-            <button onclick="cadastrar('PALACE CRYSTALIZED, ',900.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('PALACE CRYSTALIZED',900.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -112,7 +112,7 @@
             <img src="./assets/supreme box.webp">
             <p>SUPREME BOX LOGO</p>
             <p id="p11">R$3.500,00</p>
-            <button onclick="cadastrar('SUPREME BOX LOGO, ',3500.0)" class="botaoCadastrar">adicionar no
+            <button onclick="cadastrar('SUPREME BOX LOGO',3500.0)" class="botaoCadastrar">adicionar no
                 carrinho</button>
         </div>
 
@@ -120,7 +120,7 @@
             <img src="./assets/high space g.jpg">
             <p>HIGH SPACE G</p>
             <p id="p12">R$420,00</p>
-            <button onclick="cadastrar('HIGH SPACE G, ',420.0)" class="botaoCadastrar">adicionar no carrinho</button>
+            <button onclick="cadastrar('HIGH SPACE G',420.0)" class="botaoCadastrar">adicionar no carrinho</button>
         </div>
     </div>
 
@@ -187,7 +187,7 @@
 
             somaPreco += listaPreco[contador]
 
-            itensCarrinho.innerHTML += listaProduto[contador]
+            itensCarrinho.innerHTML += listaProduto[contador] + " | "
             precoCarrinho.innerHTML = somaPreco
 
             console.log("Somar: " + somaPreco)
@@ -268,6 +268,13 @@
             }).catch(function (erro) {
                 console.log(erro);
             })
+            itensCarrinho.innerHTML = ""
+            precoCarrinho.innerHTML = ""
+
+            listaProduto = []
+            listaPreco = []
+            sessionStorage.setItem('listaPreco', "");
+            sessionStorage.setItem('listaProduto', "");
         }
     }
 </script>

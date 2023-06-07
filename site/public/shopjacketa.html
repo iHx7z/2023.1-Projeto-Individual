@@ -27,28 +27,28 @@
                 <img src="./assets/palace jacket 1.webp">
                 <p>PALACE STELL GREY</p>
                 <p id="p1">R$1.200,00</p>
-                <button onclick="cadastrar('PALACE STELL GREY, ',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('PALACE STELL GREY',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta2">
                 <img src="./assets/palace jacket 2.webp">
                 <p>PALACE X GORE TEX</p>
                 <p id="p2">R$1.000,00</p>
-                <button onclick="cadastrar('PALACE X GORE TEX, ',1000.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('PALACE X GORE TEX',1000.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta3">
                 <img src="./assets/palace jacket 4.webp">
                 <p>PALACE AVIATOR JACKET</p>
                 <p id="p3">R$700,00</p>
-                <button onclick="cadastrar('PALACE AVIATOR JACKET, ',700.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('PALACE AVIATOR JACKET',700.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta4">
                 <img src="./assets/palace jacket 3.webp">
                 <p>PALACE RIPSTOP</p>
                 <p id="p4">R$1.200,00</p>
-                <button onclick="cadastrar('PALACE RIPSTOP, ',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('PALACE RIPSTOP',1200.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
         </div>
 
@@ -58,28 +58,28 @@
                 <img src="./assets/fa jacket 1.webp">
                 <p>FUCKING AWESOME BOMBER</p>
                 <p id="p5">R$650,00</p>
-                <button onclick="cadastrar('FUCKING AWESOME BOMBER, ',650.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('FUCKING AWESOME BOMBER',650.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta6">
                 <img src="./assets/FA XXADREZ.webp">
                 <p>FUCKING AWESOME FLANNEL</p>
                 <p id="p6">R$700,00</p>
-                <button onclick="cadastrar('FUCKING AWESOME FLANNEL, ',700.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('FUCKING AWESOME FLANNEL',700.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta7">
                 <img src="./assets/stussy sherpa.webp">
                 <p>STUSSY SHERPA</p>
                 <p id="p7">R$1.700,00</p>
-                <button onclick="cadastrar('STUSSY SHERPA, ',1700.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('STUSSY SHERPA',1700.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta8">
                 <img src="./assets/corta sufgang.webp">
                 <p>SUFGANG 4-40 JACKET</p>
                 <p id="p8">R$350,00</p>
-                <button onclick="cadastrar('SUFGANG 4-40 JACKET, ',350.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('SUFGANG 4-40 JACKET',350.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
         </div>
 
@@ -89,28 +89,28 @@
                 <img src="./assets/bape shark.jpg">
                 <p>BAPE SHARK</p>
                 <p id="p9">R$2.000,00</p>
-                <button onclick="cadastrar('BAPE SHARK, ',2000.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('BAPE SHARK',2000.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta10">
                 <img src="./assets/high picasso.webp">
                 <p>HIGH QUARTER ZIP</p>
                 <p id="p10">R$400,00</p>
-                <button onclick="cadastrar('HIGH QUARTER ZIP, ',400.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('HIGH QUARTER ZIP',400.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta11">
                 <img src="./assets/class paladinium.jpg">
                 <p>CLASS PALADIO GREY</p>
                 <p id="p11">R$320,00</p>
-                <button onclick="cadastrar('CLASS PALADIO GREY, ',320.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('CLASS PALADIO GREY',320.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
 
             <div id="camiseta12">
                 <img src="./assets/high camo.webp">
                 <p>HIGH COMPANY WHITE CAMO</p>
                 <p id="p12">R$420,00</p>
-                <button onclick="cadastrar('HIGH COMPANY WHITE CAMO, ',420.0)" class="botaoCadastrar">adicionar no carrinho</button>
+                <button onclick="cadastrar('HIGH COMPANY WHITE CAMO',420.0)" class="botaoCadastrar">adicionar no carrinho</button>
             </div>
         </div>
 
@@ -176,7 +176,7 @@
 
             somaPreco += listaPreco[contador]
 
-            itensCarrinho.innerHTML += listaProduto[contador]
+            itensCarrinho.innerHTML += listaProduto[contador] + " | "
             precoCarrinho.innerHTML = somaPreco
 
             console.log("Somar: " + somaPreco)
@@ -194,6 +194,14 @@
         } else {
             Swal.fire('COMPRA REALIZADA COM SUCESSO ENVIAREMOS UM EMAIL COM MAIS INFORMAÇÕES')
             console.log(listaProduto, listaPreco)
+
+            // itensCarrinho.innerHTML = ""
+            // precoCarrinho.innerHTML = ""
+
+            // listaProduto = []
+            // listaPreco = []
+            // sessionStorage.setItem('listaPreco', "");
+            // sessionStorage.setItem('listaProduto', "");
 
             for (contador = 0; contador < listaPreco.length; contador++) {
                 somaPreco += listaPreco[contador]
@@ -257,6 +265,13 @@
             }).catch(function (erro) {
                 console.log(erro);
             })
+            itensCarrinho.innerHTML = ""
+            precoCarrinho.innerHTML = ""
+
+            listaProduto = []
+            listaPreco = []
+            sessionStorage.setItem('listaPreco', "");
+            sessionStorage.setItem('listaProduto', "");
         }
     }
 </script>

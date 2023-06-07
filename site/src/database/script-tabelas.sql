@@ -11,10 +11,18 @@ idCarrinho INT PRIMARY KEY AUTO_INCREMENT,
 produtos VARCHAR(200),
 precoTotal INT,
 fkUsuario INT,
-FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario));
+FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario),
+dataHora DATETIME );
 
 SELECT * FROM carrinho;
 SELECT * FROM usuario;
 
+-- grafico com total vendido por mês
+SELECT 
+DATE_FORMAT(dataHora, '%m') AS mês,
+SUM(precoTotal) AS 'valor total vendido'
+	FROM carrinho 
+		GROUP BY DATE_FORMAT(dataHora, '%m');
+
 SELECT * FROM usuario JOIN carrinho
-ON fkusuario = id WHERE id = 26;  
+ON fkusuario = id WHERE id = 26;
