@@ -1,5 +1,0 @@
-1 usuario pd ter muitos carrinhos
-1 carrinho só pode ter 1 usuario
-
-1 carrinho pode ter muitos produtos
-1 produto pode ter muitos carrinhos

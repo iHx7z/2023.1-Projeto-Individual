@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANÁLISE DE VENDAS</title>
     <link rel="stylesheet" href="./css/dash.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/funcoes.js"></script>
 
 </head>
 <body>
@@ -15,119 +16,164 @@
       <h1 id="tituloDash">ANÁLISE DE VENDAS</h1>
   </div>
 
-    <div id="divPai">
-
-      <div id="filtros">
-        <p id="tituloFiltros">Filtros</p>
-        <select name="select" id="selectMes">
-          <option value="escolher">Mês</option>
-          <option value="janeiro">Janeiro</option>
-          <option value="fevereiro">Fevereiro</option>
-          <option value="março">Março</option>
-        </select>
-      </div>
-
-    <div id="faturamento">
-        <p id="tituloFaturamento">Faturamento</p>
-        <p id="valorFaturamento">R$ 20 Mi</p>
-        <img id="triFaturamento" src="./assets/triangulo verde.png">
-        <p id="triTextoFaturamento">15,95%</p>
-    </div>
-
-    <div id="lucro">
-        <p id="tituloLucro">Lucro</p>
-        <p id="valorLucro">R$ 20 Mi</p>
-        <img id="triLucro" src="./assets/triangulo verde.png">
-        <p id="triTextoLucro">15,95%</p>
-    </div>
-
-    <div id="devoluções">
-        <p id="tituloDevoluções">Devoluções</p>
-        <p id="valorDevoluções">R$ 20 Mi</p>
-        <img id="triDevoluções" src="./assets/triangulo verde.png">
-        <p id="triTextoDevoluções">15,95%</p>
-    </div>
-
-    <div id="qtdVendas">
-        <p id="tituloVendas">Quantidade de Vendas</p>
-        <p id="valorVendas">R$ 20 Mi</p>
-        <img id="triVendas" src="./assets/triangulo verde.png">
-        <p id="triTextoVendas">15,95%</p>
-    </div>
-    </div>
-
-    <div class="paiGraficos">
+    <div id="paiGraficos">
     <div>
         <canvas id="myChart"></canvas>
     </div>
-    <div>
-      <canvas id="myChart2"></canvas>
   </div>
-</div>
-    
-    
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <div id="menuLateral">
+    <img id="fotoRosto" src="assets/tony png.png">
+    <h1 id="tituloBemVindo">BEM VINDO ANTHONY</h1>
+    <p id="loginFuncionario">Login como Funcionário</p>
+    <button onclick="sair()" class="botaoSair">Sair</button>
+  </div>
+
+  <div id="meses">
+  <p id="legendaMeses">Mêses Analisados</p>
+  </div>
       
-      <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'],
-            datasets: [{
-              label: 'temperatura média',
-              data: [22, 24, 27, 23, 20, 18],
-              borderWidth: 1
-            },
-            {
-              label: 'umidade média',
-              data: [90, 89, 93, 87, 88, 82],
-              borderWidth: 1
-            }
-            ]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-      </script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-<script>
-  const ctx2 = document.getElementById('myChart2');
-
-  new Chart(ctx2, {
-    type: 'pie',
-    data: {
-      labels: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'],
-      datasets: [{
-        label: 'temperatura média',
-        data: [22, 24, 27, 23, 20, 18],
-        borderWidth: 1
-      },
-      {
-        label: 'umidade média',
-        data: [90, 89, 93, 87, 88, 82],
-        borderWidth: 1
-      }
-      ]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-</script>
 </body>
 </html>
+
+<script>
+  
+window.onload = obterDadosGrafico();
+
+function obterDadosGrafico(idAnaliseMensal) {
+
+fetch(`/medidas/ultimas/${idAnaliseMensal}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGrafico(resposta, idAnaliseMensal);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+function plotarGrafico(resposta, idAnaliseMensal) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico - labels
+let labels = [];
+
+// Criando estrutura para plotar gráfico - dados
+let dados = {
+    labels: labels,
+    datasets: [{
+        label: 'Valor Vendido em R$',
+        data: [],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+    }]
+};
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    labels.push(registro.mês);
+    dados.datasets[0].data.push(registro.valorTotalVendido);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labels)
+console.log('Dados:')
+console.log(dados.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const config = {
+    type: 'line',
+    data: dados,
+};
+
+// Adicionando gráfico criado em div na tela
+let myChart = new Chart(
+    document.getElementById(`myChart`),
+    config
+);
+
+setTimeout(() => atualizarGrafico(idAnaliseMensal, dados, myChart), 2000);
+}
+
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas, 
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGrafico(idAnaliseMensal, dados, myChart) {
+
+fetch(`/medidas/tempo-real/${idAnaliseMensal}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            // let avisoCaptura = document.getElementById(`avisoCaptura${idAnaliseMensal}`)
+            // avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].valorTotalVendido)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].mês); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].valorTotalVendido); // incluir uma nova medida de umidade
+
+                // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            // proximaAtualizacao = setTimeout(() => atualizarGrafico(idAnaliseMensal, dados, myChart), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        // proximaAtualizacao = setTimeout(() => atualizarGrafico(idAnaliseMensal, dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+function sair () {
+  window.location = "index.html"
+}
+</script>

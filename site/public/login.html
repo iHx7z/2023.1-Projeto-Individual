@@ -34,12 +34,16 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "anthony@gmail.com" && senhaVar == "senha123") {
-            setTimeout(() => {
-                    window.location = "dash.html";
-                }, "3000") }
+        if (emailVar == "anthony@funcionario.com" && senhaVar == "321321") {
         
-
+                     Swal.fire('BEM VINDO A ÁREA ADMINISTRATIVA')
+                        // window.location = "shop.html"
+                        setTimeout(() => {
+                    window.location = "dash.html";
+                }, "2000")
+        
+        } else {
+        
         if (emailVar == "" || senhaVar == "") {
             Swal.fire('TODOS OS CAMPOS PRECISAM SER PREENCHIDOS')
             finalizarAguardar();
@@ -106,5 +110,6 @@
 
     function sumirMensagem() {
         cardErro.style.display = "none"
+    }
     }
 </script>
